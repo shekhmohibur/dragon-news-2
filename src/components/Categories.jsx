@@ -9,7 +9,11 @@ const Categories = () => {
             <h2 className='font-semibold'>All Categories</h2>
             <div className='grid grid-cols-1 mt-5'>
                 {
-                    categories?.map((categori) => (<NavLink key={categori.id} className="btn">{categori.name}</NavLink>))
+                    categories?.map((categori) => (<NavLink 
+                        key={categori.id}
+                         className="btn rounded-none font-semibold text-accent py-6"
+                         to={`category/${categori.id}`}
+                         >{categori.name}</NavLink>))
                 }
             </div>
         </div>
