@@ -17,7 +17,7 @@ const HomeLayout = () => {
             <NavBar/>
         </nav>
       </header>
-      <main className="grid grid-cols-12 mt-5">
+      <main className="grid grid-cols-12 mt-5 gap-5">
         <aside className="left_aside col-span-3">
           <LeftAside/>
         </aside>
