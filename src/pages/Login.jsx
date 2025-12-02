@@ -1,9 +1,12 @@
-import { use } from "react";
-import { Link } from "react-router";
+import { use, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
   const {logIN} = use(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -11,11 +14,12 @@ const Login = () => {
     const password = form.password.value;
     logIN(email, password).then((result) => {
       result.user;
+      navigate(`${location.state ? location.state : "/"}`)
       
     }).catch((error) => {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(errorCode, errorMessage)
+      // const errorMessage = error.message;
+      setError(errorCode)
     })
   }
   return (
@@ -32,6 +36,7 @@ const Login = () => {
           placeholder="Enter your email address"
           className="input input-bordered w-full mb-4 outline-0"
           name="email"
+          required
         />
 
         {/* Password */}
@@ -41,10 +46,14 @@ const Login = () => {
           placeholder="Enter your password"
           className="input input-bordered w-full outline-0"
           name="password"
+          required
         />
         <p className="text-sm text-blue-600 cursor-pointer mb-4">
           Forgot Password?
         </p>
+          {
+            error && <p className="text-secondary text-sm text-center mb-2">{error}</p>
+          }
         {/* Login Button */}
         <button type="submit" className="btn w-full bg-neutral text-white hover:bg-neutral-focus">
           Login

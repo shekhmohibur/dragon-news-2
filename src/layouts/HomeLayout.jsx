@@ -1,27 +1,32 @@
-import { Outlet } from "react-router";
+import { Outlet, useNavigation } from "react-router";
 import Header from "../components/Header";
 import LatestNews from "../components/LatestNews";
 import NavBar from "../components/NavBar";
 import LeftAside from "../components/homelayout/LeftAside";
 import RightAside from "../components/homelayout/RightAside";
+import Loading from "../pages/Loading";
 
 const HomeLayout = () => {
+  const { state } = useNavigation();
   return (
     <div className="w-11/12 mx-auto">
       <header>
         <Header />
         <section className="my-3">
-            <LatestNews />
+          <LatestNews />
         </section>
         <nav>
-            <NavBar/>
+          <NavBar />
         </nav>
       </header>
       <main className="grid grid-cols-12 mt-5 gap-5">
         <aside className="left_aside col-span-3 sticky top-2 h-fit">
-          <LeftAside/>
+          <LeftAside />
         </aside>
         <section className="main col-span-6">
+          {
+            state == "loading" ? <Loading/> : <Outlet/>
+          }
           <Outlet />
         </section>
         <aside className="right_aside col-span-3 sticky top-2 h-fit">
