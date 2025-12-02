@@ -1,8 +1,9 @@
 // NewsCard.jsx
 import { FaStar, FaEye, FaShareAlt, FaRegBookmark } from "react-icons/fa";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
-  const { title, author, thumbnail_url, details, rating, total_view } = news;
+  const {id, title, author, thumbnail_url, details, rating, total_view } = news;
 
   // format date like: Wednesday, August 24, 2022
   const formattedDate = new Date(author.published_date).toLocaleDateString(
@@ -55,12 +56,12 @@ const NewsCard = ({ news }) => {
       </p>
 
       {/* Read More (subtle chevron) */}
-      <button className="mt-2 text-orange-500 font-semibold inline-flex items-center gap-1">
+      <Link to={`/news-Details/${id}`} className="mt-2 text-orange-500 font-semibold inline-flex items-center gap-1">
         Read More
         <span aria-hidden className="text-sm">
           ›
         </span>
-      </button>
+      </Link>
 
       {/* Footer: rating and views */}
       <div className="flex justify-between items-center mt-4">
