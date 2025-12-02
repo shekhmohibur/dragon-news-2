@@ -1,6 +1,9 @@
 import { Link, NavLink } from "react-router";
-import userIcon from "../assets/user.png"
+import userIcon from "../assets/user.png";
+import { use } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 const NavBar = () => {
+  const { user } = use(AuthContext);
   const navItems = [
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
@@ -8,7 +11,7 @@ const NavBar = () => {
   ];
   return (
     <div className="flex justify-between items-center">
-      <div className=""></div>
+      <div className="">{user && user.email}</div>
       <div className="nav flex gap-5 text-accent">
         {navItems?.map((item) => (
           <NavLink key={item.path} to={item.path}>
@@ -18,7 +21,9 @@ const NavBar = () => {
       </div>
       <div className="login-btn flex gap-5">
         <img src={userIcon} alt="user icon" />
-        <Link className="btn btn-primary rounded-none px-7" to={'/auth/login'}>Login</Link>
+        <Link className="btn btn-primary rounded-none px-7" to={"/auth/login"}>
+          Login
+        </Link>
       </div>
     </div>
   );
