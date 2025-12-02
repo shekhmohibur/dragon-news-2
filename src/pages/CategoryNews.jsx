@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router";
+import NewsCard from "../components/NewsCard";
 
 const CategoryNews = () => {
   const { id } = useParams();
   const data = useLoaderData();
-  const [categoryNews, setCategoryNews] = useState(0);
+  const [categoryNews, setCategoryNews] = useState([]);
   //   console.log(data)
   useEffect(() => {
     if (id == "0") {
@@ -24,6 +25,11 @@ const CategoryNews = () => {
   return (
     <div>
       <h2>News Found {categoryNews.length}</h2>
+      <div className="grid grid-cols-1 gap-5">
+        {
+            categoryNews?.map(news => <NewsCard news={news} key={news.id}/>)
+        }
+      </div>
     </div>
   );
 };
