@@ -1,9 +1,10 @@
 import { Link, NavLink } from "react-router";
 import userIcon from "../assets/user.png";
-import { use } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 const NavBar = () => {
-  const { user, logOut } = use(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user)
   const navItems = [
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
