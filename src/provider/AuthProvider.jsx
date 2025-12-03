@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -23,6 +24,9 @@ const AuthProvider = ({ children }) => {
   }
   const updateUser = (updatedData) => {
     return updateProfile(auth.currentUser, updatedData)
+  }
+  const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
   }
   const logOut = () => {
     return signOut(auth);
@@ -45,6 +49,7 @@ const AuthProvider = ({ children }) => {
     loading,
     setLoading,
     updateUser,
+    resetPassword,
   };
   return <AuthContext value={authData}>{children}</AuthContext>;
 };

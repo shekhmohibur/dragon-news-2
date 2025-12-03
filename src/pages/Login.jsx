@@ -1,5 +1,5 @@
 import { use, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, Links, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
@@ -48,9 +48,9 @@ const Login = () => {
           name="password"
           required
         />
-        <p className="text-sm text-blue-600 cursor-pointer mb-4">
+        <Link to={'/auth/reset-password'} className="text-sm text-blue-600 cursor-pointer mb-4">
           Forgot Password?
-        </p>
+        </Link>
           {
             error && <p className="text-secondary text-sm text-center mb-2">{error}</p>
           }

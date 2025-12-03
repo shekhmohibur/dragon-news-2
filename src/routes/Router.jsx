@@ -8,6 +8,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import NewsDetails from "../pages/NewsDetails";
 import PrivateRoute from "../provider/PrivateRoute";
 import Loading from "../pages/Loading";
+import ResetPassword from "../pages/ResetPassword";
 
 const Router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const Router = createBrowserRouter([
                 path:"/auth/register",
                 element:<Register/>
             },
+            {
+                path:"/auth/reset-password",
+                element: <ResetPassword/>
+            }
         ]
     },
     {
