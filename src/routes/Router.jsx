@@ -9,7 +9,6 @@ import NewsDetails from "../pages/NewsDetails";
 import PrivateRoute from "../provider/PrivateRoute";
 import Loading from "../pages/Loading";
 import ResetPassword from "../pages/ResetPassword";
-
 const Router = createBrowserRouter([
     {
         path:"/",
